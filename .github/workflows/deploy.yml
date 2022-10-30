@@ -1,0 +1,46 @@
+# Deploy Dotnet to Heroku.
+name: Deploy to heroku.
+
+# Run workflow on every push to master branch
+on:
+  push:
+    branches: [deploy]
+
+# Your workflows jobs.
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Check-out your repository.
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Set Env Vars
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: 'allSpice/appsettings.json'
+        env:
+          CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
+          AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+          AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
+
+      # dotnet build and publish
+      - name: dotnet publish
+        run: |
+          dotnet publish ./allSpice -c Release
+      - name: Build, Push and Release a Docker container to Heroku.
+        uses: gonuit/heroku-docker-deploy@v1.3.3
+        with:
+          # The email address associated with your Heroku account.
+          email: ${{ secrets.HEROKU_EMAIL }}
+          # Heroku API key associated with provided user's email.
+          # Api Key is available under your Heroku account settings.
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          # Name of the heroku application to which the build is to be sent.
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          dockerfile_directory: ./allSpice
