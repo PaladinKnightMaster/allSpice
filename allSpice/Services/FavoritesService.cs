@@ -4,7 +4,12 @@ public class FavoritesService
 {
   private readonly FavoritesRepository _fRepo;
 
-  internal List<Favorite> GetFavoritesByAccountId(string Id)
+  public FavoritesService(FavoritesRepository fRepo)
+  {
+    _fRepo = fRepo;
+  }
+
+  internal List<FavoritedRecipe> GetFavoritesByAccountId(string Id)
   {
     return _fRepo.GetFavoritesByAccountId(Id);
   }

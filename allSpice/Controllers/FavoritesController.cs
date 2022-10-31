@@ -19,6 +19,7 @@ public class FavoritesController : ControllerBase
     try
     {
       Account userInfo = await _auth0provider.GetUserInfoAsync<Account>(HttpContext);
+      FavData.AccountId = userInfo.Id;
       Favorite Fav = _fs.PostFavorite(FavData);
       return Ok(Fav);
     }
