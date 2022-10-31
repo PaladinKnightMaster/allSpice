@@ -31,4 +31,21 @@ public class IngredientsController : ControllerBase
     }
   }
 
+  [HttpDelete("{IngId}")]
+  [Authorize]
+  public async Task<ActionResult<string>> DeleteIngredient(int IngId)
+  {
+    try
+    {
+      Account userInfo = await _auth0provider.GetUserInfoAsync<Account>(HttpContext);
+      // TODO how can I pass in the userInfo Id here?
+      _is.DeleteIngredient(IngId);
+      return Ok("Ingredient Removed");
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
 }

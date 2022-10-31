@@ -50,3 +50,5 @@ from recipes r
     join accounts ac on ac.id = r.creatorId;
 
 select i.* from ingredients i where recipeId = 42 ;
+
+select i.* from ingredients i where i.id = 3 

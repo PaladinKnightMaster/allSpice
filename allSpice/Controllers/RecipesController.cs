@@ -95,12 +95,12 @@ public class RecipesController : ControllerBase
   }
 
   [HttpGet("{recipeId}/ingredients")]
-  public ActionResult<List<Ingredient>> Get(int recipeId)
+  public ActionResult<List<Ingredient>> GetIngredientsByRecipeId(int recipeId)
   {
     try
     {
-      List<Ingredient> iList = _is.GetIngredientByRecipeId(recipeId);
-      return Ok();
+      List<Ingredient> iList = _is.GetIngredientsByRecipeId(recipeId);
+      return Ok(iList);
     }
     catch (Exception e)
     {
