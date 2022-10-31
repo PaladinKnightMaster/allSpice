@@ -1,8 +1,8 @@
 namespace allSpice.Services;
 
-public class FavoriteService
+public class FavoritesService
 {
-  private readonly FavoriteRepository _fRepo;
+  private readonly FavoritesRepository _fRepo;
 
   internal List<Favorite> GetFavoritesByAccountId(string Id)
   {

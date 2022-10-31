@@ -4,9 +4,9 @@ namespace allSpice.Controllers;
 [Route("api/[controller]")]
 public class FavoritesController : ControllerBase
 {
-  private readonly FavoriteService _fs;
+  private readonly FavoritesService _fs;
   private readonly Auth0Provider _auth0provider;
-  public FavoritesController(FavoriteService fs, Auth0Provider auth0provider)
+  public FavoritesController(FavoritesService fs, Auth0Provider auth0provider)
   {
     _fs = fs;
     _auth0provider = auth0provider;

@@ -1,6 +1,6 @@
 namespace allSpice.Repositories;
 
-public class FavoriteRepository
+public class FavoritesRepository
 {
   internal List<Favorite> GetFavoritesByAccountId(string Id)
   {

@@ -1,9 +1,9 @@
 namespace allSpice.Services;
 
-public class RecipeService
+public class RecipesService
 {
-  private readonly RecipeRepository _rRepo;
-  public RecipeService(RecipeRepository rRepo)
+  private readonly RecipesRepository _rRepo;
+  public RecipesService(RecipesRepository rRepo)
   {
     _rRepo = rRepo;
   }

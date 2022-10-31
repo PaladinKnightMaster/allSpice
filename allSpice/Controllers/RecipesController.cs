@@ -5,10 +5,10 @@ namespace allSpice.Controllers;
 public class RecipesController : ControllerBase
 {
   private readonly Auth0Provider _auth0provider;
-  private readonly RecipeService _rs;
-  private readonly IngredientService _is;
+  private readonly RecipesService _rs;
+  private readonly IngredientsService _is;
 
-  public RecipesController(Auth0Provider auth0provider, RecipeService rs, IngredientService @is)
+  public RecipesController(Auth0Provider auth0provider, RecipesService rs, IngredientsService @is)
   {
     _auth0provider = auth0provider;
     _rs = rs;

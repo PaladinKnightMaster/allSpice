@@ -1,10 +1,10 @@
 namespace allSpice.Services;
 
-public class IngredientService
+public class IngredientsService
 {
-  private readonly IngredientRepository _iRepo;
+  private readonly IngredientsRepository _iRepo;
 
-  public IngredientService(IngredientRepository iRepo)
+  public IngredientsService(IngredientsRepository iRepo)
   {
     _iRepo = iRepo;
   }

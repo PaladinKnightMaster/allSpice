@@ -1,9 +1,9 @@
 namespace allSpice.Repositories;
 
-public class IngredientRepository
+public class IngredientsRepository
 {
   private readonly IDbConnection _db;
-  public IngredientRepository(IDbConnection db)
+  public IngredientsRepository(IDbConnection db)
   {
     _db = db;
   }

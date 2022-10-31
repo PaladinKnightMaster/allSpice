@@ -1,10 +1,10 @@
 
 namespace allSpice.Repositories;
 
-public class RecipeRepository
+public class RecipesRepository
 {
   private readonly IDbConnection _db;
-  public RecipeRepository(IDbConnection db)
+  public RecipesRepository(IDbConnection db)
   {
     _db = db;
   }
