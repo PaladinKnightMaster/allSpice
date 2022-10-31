@@ -14,21 +14,6 @@ public class IngredientsController : ControllerBase
     _is = @is;
   }
 
-  [HttpGet]
-  public ActionResult<List<Ingredient>> Get()
-  {
-    try
-    {
-
-      return Ok();
-    }
-    catch (Exception e)
-    {
-      return BadRequest(e.Message);
-    }
-  }
-
-
   [HttpPost]
   [Authorize]
   public async Task<ActionResult<Ingredient>> PostIngredient([FromBody] Ingredient iData)
@@ -36,6 +21,7 @@ public class IngredientsController : ControllerBase
     try
     {
       Account userInfo = await _auth0provider.GetUserInfoAsync<Account>(HttpContext);
+      iData.CreatorId = userInfo.Id;
       Ingredient newI = _is.PostIngredient(iData);
       return Ok(newI);
     }

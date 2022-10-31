@@ -29,7 +29,7 @@ CREATE TABLE
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
         name VARCHAR(255) NOT NULL,
-        quantity int NOT NULL,
+        quantity VARCHAR(255) NOT NULL,
         recipeId int NOT NULL,
         Foreign Key (recipeId) REFERENCES recipes(id)
     ) default charset utf8 COMMENT '';
@@ -48,3 +48,5 @@ create table
 select r.*, ac.*
 from recipes r
     join accounts ac on ac.id = r.creatorId;
+
+select i.* from ingredients i where recipeId = 42 ;

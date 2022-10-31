@@ -6,11 +6,13 @@ public class RecipesController : ControllerBase
 {
   private readonly Auth0Provider _auth0provider;
   private readonly RecipeService _rs;
+  private readonly IngredientService _is;
 
-  public RecipesController(Auth0Provider auth0provider, RecipeService rs)
+  public RecipesController(Auth0Provider auth0provider, RecipeService rs, IngredientService @is)
   {
     _auth0provider = auth0provider;
     _rs = rs;
+    _is = @is;
   }
 
   [HttpGet]
@@ -85,6 +87,20 @@ public class RecipesController : ControllerBase
       recipeData.CreatorId = userInfo.Id;
       Recipe EditedRecipe = _rs.EditRecipe(recipeData, recipeId);
       return Ok(EditedRecipe);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
+  [HttpGet("{recipeId}/ingredients")]
+  public ActionResult<List<Ingredient>> Get(int recipeId)
+  {
+    try
+    {
+      List<Ingredient> iList = _is.GetIngredientByRecipeId(recipeId);
+      return Ok();
     }
     catch (Exception e)
     {

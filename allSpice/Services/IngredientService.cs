@@ -13,4 +13,9 @@ public class IngredientService
   {
     return _iRepo.PostIngredient(iData);
   }
+
+  internal List<Ingredient> GetIngredientByRecipeId(int recipeId)
+  {
+    return _iRepo.GetIngredientByRecipeId(recipeId);
+  }
 }
