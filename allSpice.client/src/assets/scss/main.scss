@@ -4,7 +4,7 @@
 @import "./_utilities.scss";
 @import "./loaders.scss";
 
-body{
+body {
   overscroll-behavior: none;
 }
 
@@ -30,6 +30,7 @@ select {
     &:valid {
       border: 1px solid $success;
     }
+
     &:invalid {
       border: 1px solid $danger;
     }
@@ -39,4 +40,11 @@ select {
 form:invalid button[type="submit"] {
   filter: grayscale(1);
   pointer-events: none;
+}
+
+.text-shadow {
+  color: aliceblue;
+  text-shadow: 1px 1px rgba(20, 19, 19, 0.793), 0px 0px 5px rgba(13, 4, 3, 0.831);
+  font-weight: bold;
+  letter-spacing: 0.08rem
 }
