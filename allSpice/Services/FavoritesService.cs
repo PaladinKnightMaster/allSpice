@@ -11,7 +11,7 @@ public class FavoritesService
 
   internal List<FavoritedRecipe> GetFavoritesByAccountId(string Id)
   {
-    return _fRepo.GetFavoritesByAccountId(Id);
+    return _fRepo.GetFavRecipesByAccId(Id);
   }
 
   internal Favorite PostFavorite(Favorite favData)

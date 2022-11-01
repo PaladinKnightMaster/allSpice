@@ -13,3 +13,9 @@ public class Recipe : ICreated, IRepoItem<int>
   public string Img { get; set; }
   public string Category { get; set; }
 }
+
+// public class FavoritedRecipe : Recipe
+// {
+//   public int FavoriteId { get; set; }
+
+// }

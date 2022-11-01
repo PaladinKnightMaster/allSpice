@@ -32,7 +32,7 @@ public class AccountController : ControllerBase
 
   [HttpGet("favorites")]
   [Authorize]
-  public async Task<ActionResult<List<Favorite>>> GetFavoritesByAccountIdAsync()
+  public async Task<ActionResult<List<FavoritedRecipe>>> GetFavoritesByAccountIdAsync()
   {
     try
     {

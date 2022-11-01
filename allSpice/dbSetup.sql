@@ -39,10 +39,10 @@ create table
         id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
-        accountId VARCHAR(255) NOT NULL,
         recipeId int NOT NULL,
-        Foreign Key (accountId) REFERENCES accounts(id),
-        Foreign Key (recipeId) REFERENCES recipes(id)
+        accountId VARCHAR(255) NOT NULL,
+        Foreign Key (recipeId) REFERENCES recipes(id),
+        Foreign Key (accountId) REFERENCES accounts(id)
     ) default charset utf8 COMMENT '';
 
 select r.*, ac.*
@@ -51,4 +51,10 @@ from recipes r
 
 select i.* from ingredients i where recipeId = 42 ;
 
-select i.* from ingredients i where i.id = 3 
+select i.* from ingredients i where i.id = 3 ;
+
+DELETE FROM favorites;
+
+-- DELETE FROM recipes;
+
+-- DELETE FROM ingredients

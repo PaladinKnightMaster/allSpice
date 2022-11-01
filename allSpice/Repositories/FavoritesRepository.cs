@@ -20,16 +20,37 @@ public class FavoritesRepository
     favData.Id = _db.ExecuteScalar<int>(sql, favData);
     return favData;
   }
-  internal List<FavoritedRecipe> GetFavoritesByAccountId(string Id)
+  internal List<FavoritedRecipe> GetFavRecipesByAccId(string Id)
   {
-    string sql = @"
-    select f.* from favorites f 
-    where accountId = @Id;
-    ";
-    List<FavoritedRecipe> Favs = _db.Query<FavoritedRecipe>(sql, new { Id }).ToList();
-    return Favs;
-  }
 
+    string sql = @"
+    SELECT 
+      r.*,
+      f.id AS favoriteId,
+      a.*
+    FROM favorites f
+      JOIN recipes r ON r.id = f.recipeId
+      JOIN accounts a ON r.creatorId = a.id
+    WHERE accountId = @Id
+    ;";
+    return _db.Query<FavoritedRecipe, Profile, FavoritedRecipe>(sql, (FavRec, Profile) =>
+    {
+      FavRec.Creator = Profile;
+      FavRec.CreatorId = Profile.Id;
+      return FavRec;
+    }, new { Id }).ToList();
+
+  }
+  // SELECT
+  //   r.*
+  //   a.*
+  // FROM favorites f
+  // NOTE where favorites joins recipes 
+  // JOIN recipes r ON r.id = f.recipeId
+  // NOTE where account joins recipes
+  // JOIN account a ON r.creatorId = a.id
+  // NOTE where favorites connects to user account 
+  // WHERE accountId = @Id
   internal void DeleteFavorite(int id)
   {
     string sql = @"
