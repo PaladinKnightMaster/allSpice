@@ -25,7 +25,6 @@
 
 <script>
 import { onMounted } from 'vue';
-import Login from './Login.vue';
 
 export default {
   setup() {
@@ -34,7 +33,6 @@ export default {
     });
     return {};
   },
-  components: { Login }
 }
 </script>
 
