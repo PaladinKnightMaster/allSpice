@@ -3,8 +3,7 @@
     <div class="m-3 rounded p-5 covImg elevation-4 "
       :style="{ backgroundImage: `url(src/assets/img/AllSpiceCoverImg.png)` }">
       <span class="">
-        <!-- TODO Make this work -->
-        <!-- <Login /> -->
+        <Login />
       </span>
       <div class="text-center">
         <h1 class="text-light text-shadow">All-Spice</h1>
@@ -25,6 +24,7 @@
 
 <script>
 import { onMounted } from 'vue';
+import Login from './Login.vue';
 
 export default {
   setup() {
@@ -33,6 +33,7 @@ export default {
     });
     return {};
   },
+  components: { Login }
 }
 </script>
 
